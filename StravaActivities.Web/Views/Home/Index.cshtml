@@ -1,13 +1,15 @@
-﻿@{
+﻿@model TestApplicationRestsharp.Models.HomeViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Strava Activity App</h1>
+@*<div class="jumbotron">
+    @*<h1>Strava Activity App</h1>*@
     @*<p class="lead">This is a dummy web sample to give some hint about getting started with the library.</p>
     <p>Setup your app's credentials in Config.cs!</p>*@
-    <p>@Html.ActionLink("Activities", "List", "Home", new { @class = "btn btn-primary" })</p>
-</div>
+    @*<p>@Html.ActionLink("Activities", "List", "Home", new { @class = "btn btn-primary" })</p>
+</div>*@
 
 @{
     foreach (var activity in Model.Activities)

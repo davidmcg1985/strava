@@ -8,6 +8,10 @@ namespace TestApplicationRestsharp.Models
 {
     public class HomeViewModel
     {
+        public HomeViewModel()
+        {
+        }
+
         public HomeViewModel(bool isAuthenticated)
         {
             IsAuthenticated = isAuthenticated;

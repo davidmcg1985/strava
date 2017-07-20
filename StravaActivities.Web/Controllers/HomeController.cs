@@ -28,6 +28,13 @@ namespace TestApplicationRestsharp.Controllers
             return View(viewModel);
         }
 
+        public async Task<ActionResult> Login()
+        {
+            var authenticator = CreateAuthenticator();
+            var loginUri = await authenticator.GetLoginLinkUri();
+            return Redirect(loginUri.AbsoluteUri);
+        }
+
         Authenticator CreateAuthenticator()
         {
             var redirectUrl = $"{Request.Url.Scheme}://{Request.Url.Host}/Home/Callback";
@@ -42,14 +49,6 @@ namespace TestApplicationRestsharp.Controllers
             var client = new StravaClient(new RequestFactory(), config);
 
             return new Authenticator(client);
-        }
-
-        public async Task<ActionResult> List()
-        {
-            var authenticator = CreateAuthenticator();
-            var loginUri = await authenticator.GetLoginLinkUri();
-
-            return Redirect(loginUri.AbsoluteUri);
         }
 
         public async Task<ActionResult> Callback()

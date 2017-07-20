@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model TestApplicationRestsharp.Models.HomeViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,9 +22,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    @if (!Model.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    }
+                    else
+                    {
+                        <li class="disabled">@Html.ActionLink("Login", "Login", "Home")</li>
+                    }
+
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
             </div>
         </div>
