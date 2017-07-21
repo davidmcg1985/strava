@@ -18,6 +18,7 @@ namespace TestApplicationRestsharp.Models
         }
 
         public bool IsAuthenticated { get; set; }
-        public IList<ActivityViewModel> Activities { get; } =  new ObservableCollection<ActivityViewModel>();
+        public IList<ActivityViewModel> Activities { get; set; } =  new ObservableCollection<ActivityViewModel>();
+        public AthleteViewModel Athlete { get; set; }
     }
 }

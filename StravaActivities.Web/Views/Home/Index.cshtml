@@ -1,22 +1,43 @@
 ﻿@model TestApplicationRestsharp.Models.HomeViewModel
 
-@{
-    ViewBag.Title = "Home Page";
+@if (Model.IsAuthenticated)
+{
+    <div class="row">
+            <div style="text-align: center;">
+                <img src="@Model.Athlete.Profile" width="140" height="140" class="img-circle">
+                <h3>@Model.Athlete.FullName</h3>
+                <em>@Model.Athlete.City</em>
+            </div>
+    </div>
 }
 
-@*<div class="jumbotron">
-    @*<h1>Strava Activity App</h1>*@
-    @*<p class="lead">This is a dummy web sample to give some hint about getting started with the library.</p>
-    <p>Setup your app's credentials in Config.cs!</p>*@
-    @*<p>@Html.ActionLink("Activities", "List", "Home", new { @class = "btn btn-primary" })</p>
-</div>*@
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model.IsAuthenticated)
+        {
+            <p>@Html.ActionLink("Show Activities", "ListActivities", "Home", new { @class = "btn btn-primary" })</p>
+        }
+        else
+        {
+            <p>@Html.ActionLink("Show Activities", "ListActivities", "Home", new { @class = "btn btn-primary disabled" })</p>
+        }
+    </div>
+</div>
 
-@{
-    foreach (var activity in Model.Activities)
-    {
-        <div class="row">
-            <p><b>@activity.Name</b></p>
-            <p>@activity.Distance <i>@activity.Start</i></p>
-        </div>
+
+
+    @{
+        foreach (var activity in Model.Activities)
+        {
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@activity.Name</h3>
+                </div>
+                <div class="panel-body">
+                    <p>@activity.Distance <i>@activity.Start</i>
+                </div>
+            </div>
+        }
     }
-}
+
